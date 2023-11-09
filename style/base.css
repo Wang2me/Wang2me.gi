@@ -1,0 +1,333 @@
+
+.root { 
+    --color1: #FFF;
+    --color2: #CEBF95;
+    --color3: #363E5B;
+    --color4: #000000CC;
+    --color5: #444;
+    --color6: #00000030;
+    --color7: #363E5BE6;
+
+    --font1: 'NotoSans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font2: 'NotoSerif', Georgia, 'Times New Roman', Times, serif;
+    --font3: 'Consola', monospace;
+    --fontClock: 'NotoSerifClock', Georgia, 'Times New Roman', Times, serif;
+
+    --panelTrans: none;
+    --panelTransTime: 100ms;
+
+    --heightHeader: 50px;
+
+    --widthScrollbar: 15px;
+
+    --zIndexMap: 0;
+    --zIndexHistoricalMap: 10;
+    --zIndexStructures: 20;
+    --zIndexKmlLayer: 30;
+    --zIndexUnitIcons: 40;
+    --zIndexHeader: 300;
+    --zIndexFooter: 100;
+    --zIndexPanels: 200;
+    --zIndexEventPanel: 300;
+    --zIndexMedia: 400;
+    --zIndexDropdownMenu: 700;
+    --zIndexModal: 800;
+    --zIndexLogo: 900;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: var(--color1);
+    font-family: var(--font1);
+    font-size: 10pt;
+    margin: 0;
+    padding: 0;
+}
+
+.fullscreen {
+    height: 100vh;
+    width: 100vw;
+}
+
+button {
+    background-color: var(--color3);
+    color: var(--color1);
+    border: none;
+    padding: 10px 20px;
+    font-family: var(--font2);
+    font-size: 1.25rem;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 285px auto 6.5rem 420px 1px 3.5rem;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: var(--heightHeader);
+    background-color: var(--color4);
+    overflow: hidden;
+    vertical-align: middle;
+    z-index: var(--zIndexHeader);
+}
+#menu a {
+    color: var(--color2);
+    border-left: 1px solid var(--color2);
+    display: inline-block;
+    margin: 15px 0 0 0;
+    padding: 0 15px;
+    text-decoration: none;
+}
+#menu a:hover {
+    text-decoration: underline;
+}
+#menu a:first-child {
+    border-left: none;
+}
+
+#viewsPane {
+    padding-top: 15px;
+    text-align: center;
+}
+#views {
+    border: none;
+    overflow: hidden;
+    height: 1.2rem;
+    width: 8rem;
+    padding-top: 4px;
+}
+#institutions {
+    text-align: center;
+}
+#institutions a {
+    padding: 10px 10px 0 10px;
+    display: inline-block;
+}
+#institutions img {
+    max-height: 30px;
+}
+
+#languagePane {
+    text-align: center;
+    padding-top: 16px;
+}
+
+#mobileMenuPane {
+    display: none;
+    visibility: hidden;
+    text-align: left;
+}
+
+#logoPane {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 50px;
+    z-index: var(--zIndexLogo);
+}
+#logoPane.small {
+    top: 10px;
+    left: 10px;
+}
+#logoPane a {
+    border-style: none;
+}
+#logo {
+    height: 180px;
+    width: 180px;
+    z-index: var(--zIndexLogo);
+}
+#logoPane.small #logo {
+    height: calc(var(--heightHeader) + 20px);
+    width: calc(var(--heightHeader) + 20px);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+}
+
+#mediaPanel {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: var(--zIndexMedia);
+    box-sizing: border-box;
+    background-color: var(--color4);
+}
+
+#mediaPanel .context {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#mediaPanel .context img, #mediaPanel .context video {
+    max-width: 90%;
+    max-height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px white solid;
+    border-radius: 3px;
+}
+
+
+.photoAlbum {
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+.photoAlbum .caption {
+    color: var(--color2);
+    font-family: var(--font2);
+}
+.photoAlbum .images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-y: hidden;    
+    padding: 0;
+    scroll-behavior: smooth;
+    height: var(--heightPhotoAlbum);
+    padding: 0;
+    overflow: none;
+    opacity: 1.0;
+}
+.photoAlbum .images img {
+    background: #FFF;
+    border: 2px solid #FFFD;
+    box-sizing: border-box;
+    display: block;
+    max-height: 100%;
+    /*max-width: 100%;*/
+    height: auto;
+    width: auto;
+    cursor: zoom-in;
+    opacity: 1.0;
+}
+.photoAlbum .selectorList {
+    text-align: center;
+    padding: 3px 0;
+}
+.photoAlbum .selectorList .selector {
+    background-color: var(--color2);
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+}
+.photoAlbum .selectorList .selector.selected {
+    background-color: var(--color1);
+    cursor: auto;
+}
+
+
+.show {
+    display: block;
+    visibility: visible;
+}
+.hide {
+    display: none;
+    visibility: hidden;
+}
+/* responsive section for mobile device */
+@media only screen and (max-width: 960px) {
+    :root {
+        --heightHeader: 3rem;
+    }
+
+    html, body {
+        font-size: 10pt;
+    }
+    
+    header {
+        grid-template-columns: auto 10rem 2rem 5.7rem;
+        height: var(--heightHeader);
+        overflow: visible;
+    }
+    #logoPane {
+        top: 0.5rem;
+        left: 0.5rem;
+        width: 6rem;
+        height: 6rem;
+    }
+    #logo {
+        width: 100%;
+        height: 100%;
+        z-index: var(--zIndexLogo);
+    }
+    #menu {
+        background-color: var(--color4);
+        border-bottom-left-radius: 0.5rem;
+        display: none;
+        position: absolute;
+        top: var(--heightHeader);
+        right: 0;
+        text-align: right;
+        z-index: calc(var(--zIndexDropdownMenu) + 2);
+    }
+    #menu a {
+        display: block;
+        border: none;
+        padding: 0.5rem 2rem;
+        margin: 0;
+        border-top: 1px dotted var(--color2);
+    }
+    
+    #institutions {
+        border-bottom-left-radius: 0.5rem;
+        display: none;
+        position: absolute;
+        top: var(--heightHeader);
+        background-color: var(--color4);
+        text-align: center;
+        right: 0;
+        z-index: calc(var(--zIndexDropdownMenu) + 1);
+    }
+    #institutions a {
+        display: block;
+        border-top: 1px dotted var(--color2);
+        padding: 1rem 2rem;
+    }
+    #institutions a img {
+        height: 2rem;
+    }
+
+    #viewsPane {
+        padding-top: 0.7rem;
+    }
+    #languagePane {
+        padding-top: 0.9rem;
+        padding-right: 0.5rem;
+    }
+    #mobileMenuPane {
+        display: inline-flex;
+        visibility: visible;
+        padding-top: 0.7rem;
+        padding-right: 0.2rem;
+        justify-content: space-around;
+    }
+    #mobileMenuPane img {
+        max-height: 1.5rem;
+        height: 1.5rem;
+        max-width: 2rem;
+        margin-left: 0.25rem;
+    }
+}
+
+@media only screen and (max-width: 960px) and (orientation: portrait) {
+}

@@ -1,0 +1,145 @@
+        /* 地图容器的样式 */
+        #map-container {
+            position: absolute;
+            bottom: 10%;
+            right: 0;
+            width: 80%;
+            height: 80%;
+            z-index: 0;
+            background-color: #c7f00e;
+        }
+
+        .external-container{
+            position: absolute;  
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: #0eecf0;
+        }
+
+
+       
+
+        /* 图片按钮的样式 */
+        .image-button {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        /* 文字的样式 */
+        .text {
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            color: #333;
+            font-size: 16px;
+            
+            display: none;
+        }
+
+        
+
+        /* 选项卡按钮的样式 */
+        .tab-button {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            top :50%;
+            margin-right: 0px;
+            z-index: 1;
+        }
+
+        /* 选项卡内容的样式 */
+        .tab-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            z-index: 1;
+        }
+
+
+
+
+.category-container {
+    
+    display: flex;
+    width: 10%;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    background-color: #f1340e;
+    padding: 10px;
+    bottom: 0;
+    height: 80%;
+    z-index: 3;
+    transition: width 0.5s; /* 添加过渡动画以平滑显示/隐藏 */
+}
+
+
+
+
+.subcategory-container{
+    position: relative;
+    flex-direction: column;
+    align-items: left;
+   
+    display: none;
+    left:10;
+    background-color: #c4f10e;
+    width: 50;;
+    z-index:4;
+    transition: width 0.5s; /* 添加过渡动画以平滑显示/隐藏 */
+
+}
+
+.toggle-icon {
+    position: absolute;
+    top: 50%; /* 将图标垂直居中 */
+    left: 10%; /* 放置在右侧 */
+    transform: translateY(-50%); /* 使其垂直居中 */
+    width: 50px;
+    height: 50px;
+    background-image: url('/media/animal_icon/lion.png');
+    background-size: cover;
+    cursor: pointer;
+    z-index: 4; /* 设置一个较高的 z-index，以便位于 .category-container 之上 */
+    transition: left 0.5s; /* 添加过渡动画以平滑移动 */
+}
+
+.category-container.hidden .toggle-icon {
+    left: 90%; /* 移至页面最右侧 */
+}
+
+    /* 单个分类按钮样式 */
+    .category-button {
+        /* background-color: #e42222; */
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    /* 选中按钮样式 */
+    .selected {
+        background-color: #007bff;
+        color: #fff;
+        z-index: 1;
+    }
+
+/* 时间轴 */
+    #timeline {
+        position: absolute;
+        bottom: 0px; /* 距离底部的距离，根据需要调整 */
+        right: 0px; /* 距离左侧的距离，根据需要调整 */
+        width: 1000px; /* 时间轴的宽度，根据需要调整 */
+        
+        z-index: 99999;
+      }
+

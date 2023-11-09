@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh_en">
+<head>
+    <meta charset="UTF-8">
+    <title>交互地图googleapi</title>
+    <!-- 引入 Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkS_NQZ6f1uts0OL68H6KkwmSBnt25ObU&language=zh-HK"></script>
+    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+
+    <!-- <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode:'9e63b05fbd15ebf099eeafd756f1279b',
+        }
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=19eebd1efaac152d1fda10073849d423"></script>  -->
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- <div id="languagePane">
+        <a href="/EN.html" title="switch to English version"><img id="languageSwitch" src="/media/animal_icon/dog.png" alt="switch language"></a>
+    </div> -->
+
+    <!-- 样式 -->
+    <link rel="stylesheet" type="text/css" href="/style/base.css">
+    <link rel="stylesheet" type="text/css" href="/style/style.css">
+</head>
+
+
+
+<body>
+    <!-- 外部容器，放置按钮和选项卡 -->
+    <div class="external-container">
+        
+        <!-- 图片按钮 -->
+    </div>
+    <img class="image-button" src="/media/animal_icon/cat.png" alt="按钮" id="imageButton">
+      
+        <!-- 文字 -->
+        <p class="text" id="displayText">一带一路</p>
+
+        <!-- 选项卡容器 -->
+        <div class="tabs">
+            <button class="tab-button" onclick="showTab('tab1')">选项卡 </button>
+            <button class="tab-button" onclick="showTab('tab2')">选项卡 2</button>
+        </div>
+       
+        <div class="timeline-container"id="timeline">
+          <input type="range" id="slider" min="0" max="8000" step="1" value="0" >
+          <img id="controlImage" src="/media/animal_icon/dog.png" alt="按钮">
+          <div class="timeline-text-container">
+            <div class="button-container" id="buttonContainer">
+                <button class="timeline-button" id="button" data-value="1000">史前至夏商周</button>
+                <button class="timeline-button" id="button"data-value="2000">秦漢</button>
+                <button class="timeline-button" id="button"data-value="3000">三國兩晉南北朝</button>
+                <button class="timeline-button" id="button"data-value="4000">唐</button>
+                <button class="timeline-button" id="button"data-value="5000">宋</button>
+                <button class="timeline-button" id="button"data-value="6000">元</button>
+                <button class="timeline-button" id="button"data-value="7000">明</button>
+                <button class="timeline-button" id="button" data-value="8000">清</button>
+             </div>
+             <p id="current-year">Year: 0</p>
+        </div>
+          
+          
+        </div>
+        <div class="tab-content" id="tab1">选项卡 1 内容</div>
+        <div class="tab-content" id="tab2">选项卡 2 内容</div>
+        <div class="custom-marker" id="customMarker"></div>
+    <!-- 地图容器 -->
+    <div id="map-container">
+        
+    </div>
+  
+
+
+        <!-- 分类器容器 -->
+    <div class="category-container">
+
+
+
+        <button class="category-sub" id="11Button" onclick="toggleContainer('11CategoryContainer')">ways</button>
+        
+
+        <div class="subcategory-container" id="11CategoryContainer">
+        <label class="category-button">
+            <input type="checkbox" class="category-checkbox" id="oceanCheckbox" data-category="D" value="海上絲綢之路"> 海上絲綢之路
+        </label>
+        <label class="category-button">
+            <input type="checkbox" class="category-checkbox" id="landCheckbox" data-category="D" value="陸上絲綢之路"> 陸上絲綢之路
+        </label>
+        </div>
+
+        <hr width="100%" />
+
+
+        <button class="category-sub" id="animalButton" onclick="toggleContainer('animalCategoryContainer')">动物类别</button>
+        
+
+        <div class="subcategory-container" id="animalCategoryContainer">
+        <label class="category-button">
+            <input type="checkbox" class="category-checkbox" id="camelCheckbox" data-category="A"value="駱駝"> 駱駝
+        </label>
+        <label class="category-button">
+            <input type="checkbox" class="category-checkbox" id="catCheckbox"data-category="A" value="貓"> 貓
+        </label>
+        <label class="category-button">
+            <input type="checkbox" class="category-checkbox" id="dogCheckbox"data-category="A" value="狗"> 狗
+        </label>
+        <label class="category-button">
+            <input type="checkbox" class="category-checkbox" id="rhinoCheckbox" data-category="A" value="犀牛"> 犀牛
+        </label>
+        <label class="category-button">
+            <input type="checkbox" class="category-checkbox" id="leopardCheckbox" data-category="A" value="豹"> 豹
+        </label>
+        <label class="category-button">
+            <input type="checkbox" class="category-checkbox" id="lionCheckbox" data-category="A" value="lion"> 獅
+        </label>
+        <label class="category-button">
+            <input type="checkbox" class="category-checkbox" id="elephantCheckbox" data-category="A"value="象"> 象
+        </label>
+        </div>
+        <hr width="100%" />
+        <button class="category-sub" id="dynastyButton" onclick="toggleContainer('dynastyCategoryContainer')">朝代类别</button>
+        <div class="subcategory-container" id="dynastyCategoryContainer">  
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="xia-Checkbox" data-category="B" value="史前至夏商周"> 史前至夏商周 
+        </label>
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="qinhan-Checkbox" data-category="B" value="秦漢"> 秦漢
+        </label>
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="sanguo-Checkbox" data-category="B" value="三國兩晉南北朝"> 三國兩晉南北朝
+        </label>
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="tang-Checkbox" data-category="B"value="唐"> 唐
+        </label>
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="song-Checkbox" data-category="B"value="宋"> 宋
+        </label>
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="yuan-Checkbox" data-category="B"value="元"> 元
+        </label>
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="ming-Checkbox"data-category="B" value="明"> 明
+        </label>
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="qing-Checkbox" data-category="B"value="清"> 清
+        </label>
+        </div>
+
+        
+           
+        <hr width="100%" />
+
+
+        
+        <button class="category-sub" id="waysButton" onclick="toggleContainer('waysCategoryContainer')">功能</button>
+
+
+        <div class="subcategory-container" id="waysCategoryContainer">  
+            <label class="category-button"> 
+                <input type="checkbox" class="category-checkbox" id="zongjiao-Checkbox" data-category="C" value="宗教信仰"> 宗教信仰 
+            </label>
+            <label class="category-button"> 
+                <input type="checkbox" class="category-checkbox" id="chaogong-Checkbox" data-category="C" value="朝貢"> 朝貢
+            </label>
+            <label class="category-button"> 
+                <input type="checkbox" class="category-checkbox" id="shenfen-Checkbox" data-category="C" value="身份象徵"> 身份象徵
+            </label>
+            <label class="category-button"> 
+                <input type="checkbox" class="category-checkbox" id="junshi-Checkbox" data-category="C" value="軍事"> 軍事
+            </label>
+            <label class="category-button"> 
+                <input type="checkbox" class="category-checkbox" id="wenhua-Checkbox" data-category="C" value="文化娛樂"> 文化娛樂
+            </label>
+        </div>
+        <hr width="100%" />
+        <button class="category-sub" id="areaButton" onclick="toggleContainer('areaCategoryContainer')">地區</button>
+    <div class="subcategory-container" id="areaCategoryContainer">  
+        <!-- <label class="category-button">
+            <input type="radio" class="category-radio" name="area" onclick="toggleSelf(this)" value="全不選"> 全不選
+        </label> -->
+        <label class="category-button">
+            <input type="checkbox" class="category-sub" id="asiaButton" onclick="toggleAsiaContainer()">亞洲
+        </label>
+        <div class="asia-container" id="asiaContainer">
+        <label class="asia-button"> 
+            <input type="checkbox" class="category-checkbox" id="zhong-Checkbox" data-category="E" value="中亞"> 中亞 
+        </label>
+        <label class="asia-button"> 
+            <input type="checkbox" class="category-checkbox" id="xi-Checkbox" data-category="E" value="西亞"> 西亞 
+        </label>
+        <label class="asia-button"> 
+            <input type="checkbox" class="category-checkbox" id="na-Checkbox" data-category="E" value="南亞"> 南亞 
+        </label>
+        <label class="asia-button"> 
+            <input type="checkbox" class="category-checkbox" id="dongnan-Checkbox" data-category="E" value="東南亞"> 東南亞 
+        </label>
+        <label class="asia-button"> 
+            <input type="checkbox" class="category-checkbox" id="dong-Checkbox" data-category="E" value="東亞"> 東亞 
+        </label>
+        <label class="asia-button"> 
+            <input type="checkbox" class="category-checkbox" id="bei-Checkbox" data-category="E" value="北亞"> 北亞 
+        </label>
+        </div>
+
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="ouzhou-Checkbox" data-category="E" value="歐洲"> 歐洲
+        </label>
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="feizhou-Checkbox" data-category="E" value="非洲"> 非洲
+        </label>
+        <label class="category-button"> 
+            <input type="checkbox" class="category-checkbox" id="meizhou-Checkbox" data-category="E" value="美洲"> 美洲
+        </label>
+       
+        </label>
+    </div>
+      
+    </div>
+    <i class="toggle-icon" id="toggle"> </i>
+
+
+
+    <!-- 内容容器 -->
+    <div id="content-container" class="hidden">
+        
+    </div>
+
+    <script src="/script/site.js"></script>
+    <script src="/script/script.js"></script>
+    <script src="/script/time.js"></script>
+    <script src="/script/lionMove.js"></script>
+   
+
+</body>
+</html>

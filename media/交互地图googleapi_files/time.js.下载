@@ -1,0 +1,25 @@
+// 获取时间轴元素的引用
+
+var timeline = document.getElementById('timeline');
+var slider = document.getElementById('slider');
+var currentYear = document.getElementById('current-year');
+
+
+// 根据滑块的值更新地图内容
+slider.addEventListener('input', function () {
+    var year = slider.value;
+    // 根据年份更新地图内容，这里只是一个示例
+    // 可以根据您的需求加载不同的图层或数据
+    updateMapContent(year);
+    // 更新当前年份显示
+    currentYear.textContent = 'Year: ' + year;
+  });
+  
+  // 函数用于根据年份更新地图内容（示例函数）
+  function updateMapContent(year) {
+    // 在这里根据年份更新地图内容
+    // 可以加载不同的图层、标记或数据
+    // 这里只是一个示例，您需要根据您的需求自定义该函数
+  
+    
+  }

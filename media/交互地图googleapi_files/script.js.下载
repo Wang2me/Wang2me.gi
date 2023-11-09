@@ -1,0 +1,244 @@
+// 图标信息
+var iconInfo = {
+    camel: { url: '/media/animal_icon/camel.PNG', scaledSize: new google.maps.Size(50, 50)},
+    cat: { url: '/media/animal_icon/cat.png' },
+    dog: { url: '/media/animal_icon/dog.png', scaledSize: new google.maps.Size(50, 50) },
+    rhino: { url: '/media/animal_icon/rhino.png' },
+    leopard: { url: '/media/animal_icon/leopard.png', scaledSize: new google.maps.Size(50, 50) },
+    lion: { url: '/media/animal_icon/lion.png' },
+    elephant: { url: '/media/animal_icon/elephant.png', scaledSize: new google.maps.Size(50, 50) },
+};
+
+// 地图、标记、复选框等的全局变量
+var map;
+var markers = {};
+
+function initMap() {
+    var bounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(-75, -180),
+        new google.maps.LatLng(75, 180)
+    );
+
+    map = new google.maps.Map(document.getElementById('map-container'), {
+        center: { lat: 34.123, lng: 108.456 },
+        zoom: 5,
+        minZoom: 2,
+        maxZoom: 13,
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+        mapTypeControl: false,
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+            position: google.maps.ControlPosition.RIGHT_CENTER,
+        },
+        restriction: {
+            latLngBounds: bounds,
+            strictBounds: true,
+        },
+    });
+
+    map.set('styles', mapstyle);
+
+    // 初始化标记
+    markers.camel1 = createMarker({ lat: 34.123, lng: 108.456 }, 'camel');
+    markers.camel2 = createMarker({ lat: 35.123, lng: 108.456 }, 'camel');
+
+    markers.cat1 = createMarker({ lat: 36.123, lng: 108.456 }, 'cat');
+    markers.cat2 = createMarker({ lat: 37.123, lng: 108.456 }, 'cat');
+
+    markers.dog1 = createMarker({ lat: 35.123, lng: 108.456 }, 'dog');
+    markers.dog2 = createMarker({ lat: 36.123, lng: 118.456 }, 'dog');
+
+
+
+    markers.rhino1 = createMarker({ lat: 50.123, lng: 108.456 }, 'rhino');
+    markers.rhino2 = createMarker({ lat: 30.123, lng: 108.456 }, 'rhino');
+
+    markers.leopard1 = createMarker({ lat: 31.133, lng: 108.456 }, 'leopard');
+    markers.leopard2 = createMarker({ lat: 31.123, lng: 108.456 }, 'leopard');
+//狮子
+    markers.lion1 = createMarker({ lat:	30.0444 ,lng:31.2357}, 'lion','埃及開羅',{ categories: ['lion', '秦漢'] });
+    markers.lion2 = createMarker({ lat:	37.8201	,lng:22.6513}, 'lion','希臘尼米亞',{ categories: ['lion', '秦漢'] });
+    markers.lion3 = createMarker({ lat:	25.3176	,lng:82.9739 }, 'lion','印度瓦拉納西',{ categories: ['lion','秦漢'] });
+    markers.lion4 = createMarker({ lat:	36.1628	,lng:54.3338 }, 'lion','伊朗達姆甘',{ categories: ['lion','秦漢'] });
+    markers.lion5 = createMarker({ lat:	39.4723	,lng:75.9893 }, 'lion','新疆喀什',{ category: '其他类别' });
+    markers.lion6 = createMarker({ lat:	36.7580	,lng:66.8966 }, 'lion','阿富汗巴爾赫',{ category: '其他类别' });
+    markers.lion7 = createMarker({ lat:	41.1273	,lng:119.740 }, 'lion','遼寧喀左縣',{ category: '其他类别' });
+    markers.lion8 = createMarker({ lat:	40.1430	,lng:94.6618 },'lion','甘肅敦煌',{ category: '其他类别' });
+    markers.lion9 = createMarker({ lat:	15.8801	,lng:108.338 }, 'lion','越南會安',{ category: '其他类别' });
+    markers.lion10 = createMarker({ lat:	34.6364	,lng:   112.4501 }, 'lion','河南洛陽',{ category: '其他类别' });
+    markers.lion11 = createMarker({ lat:    33.3154	,lng:   44.3660 }, 'lion','伊拉克巴格達',{ category: '其他类别' });
+    markers.lion12 = createMarker({ lat:    40.5204	,lng:   95.7822 }, 'lion','甘肅瓜州',{ category: '其他类别' });
+    markers.lion13 = createMarker({ lat:    41.7207	,lng:   82.9430 }, 'lion','新疆庫車',{ category: '其他类别' });
+    markers.lion14 = createMarker({ lat:    41.7407	,lng:   82.9530 }, 'lion','新疆庫車',{ category: '其他类别' });
+    markers.lion15 = createMarker({ lat:	39.627	,lng:   66.9749 }, 'lion','烏茲別克斯坦撒馬爾罕',{ category: '其他类别' });
+    markers.lion16 = createMarker({ lat:	33.5138	,lng:	36.2765 }, 'lion','敘利亞大馬士革',{ category: '其他类别' });
+    markers.lion17 = createMarker({ lat:	36.4707	,lng:	52.3466 }, 'lion','伊朗阿莫勒',{ category: '其他类别' });
+    markers.lion18 = createMarker({ lat:	41.0082	,lng:	28.9784 }, 'lion','土耳其伊斯坦布爾',{ category: '其他类别' });
+    markers.lion19 = createMarker({ lat:	53.7175	,lng:	91.4292 }, 'lion','俄羅斯亞巴坎',{ category: '其他类别' });
+    markers.lion20 = createMarker({ lat:	34.7973	,lng:	114.3072 }, 'lion','河南開封',{ category: '其他类别' });
+    markers.lion21 = createMarker({ lat:	34.7970	,lng:	114.3077 }, 'lion','河南開封',{ category: '其他类别' });
+    markers.lion22 = createMarker({ lat:	15.8801	,lng:	108.338 }, 'lion','越南會安',{ category: '其他类别' });
+    markers.lion23 = createMarker({ lat:	38.1234	,lng:	46.2444}, 'lion','伊朗大不里士',{ category: '其他类别' });
+    markers.lion24 = createMarker({ lat:	21.3891	,lng:	39.8579 }, 'lion','沙特阿拉伯麥加',{ category: '其他类别' });
+    markers.lion25 = createMarker({ lat:	39.9042	,lng:	116.4074 }, 'lion','北京',{ category: '其他类别' });
+    markers.lion26 = createMarker({ lat:	39.9245	,lng:	116.4074 }, 'lion','北京',{ category: '其他类别' });
+    markers.lion27 = createMarker({ lat:	42.9513	,lng:	89.1895 }, 'lion','新疆吐魯番',{ category: '其他类别' });
+    markers.lion28 = createMarker({ lat:	34.3462	,lng:	62.2047 }, 'lion','阿富汗赫拉特',{ category: '其他类别' });
+    markers.lion29 = createMarker({ lat:	13.7563	,lng:	100.5018 }, 'lion','泰國曼谷',{ category: '其他类别' });
+    markers.lion30 = createMarker({ lat:	12.7855	,lng:	45.0185 }, 'lion','也門亞丁',{ category: '其他类别' });
+    markers.lion31 = createMarker({ lat:	27.1970	,lng:	56.2877 }, 'lion','伊朗阿拔斯港',{ category: '其他类别' });
+    markers.lion32 = createMarker({ lat:	21.3891	,lng:	39.8379 }, 'lion','沙特阿拉伯麥加',{ category: '其他类别' });
+    markers.lion33 = createMarker({ lat:	41.0182	,lng:	28.9784 }, 'lion','土耳其伊斯坦布爾',{ category: '其他类别' });
+    markers.lion34 = createMarker({ lat:	-25.9682 ,lng:	32.5729 }, 'lion','莫桑比克馬普托',{ category: '其他类别' });
+
+
+
+    markers.elephant1 = createMarker({ lat: 33.123, lng: 108.456 }, 'elephant');
+    markers.elephant2 = createMarker({ lat: 33.124, lng: 108.456 }, 'elephant');
+    markers.elephant3 = createMarker({ lat: 33.125, lng: 108.456 }, 'elephant');
+    markers.elephant4 = createMarker({ lat: 33.126, lng: 108.456 }, 'elephant');
+
+
+
+}
+
+function createMarker(position, type, label,customAttributes) {
+    // 在地图上创建标记
+    var marker = new google.maps.Marker({
+        position: position,
+        map: null,
+        icon: iconInfo[type].url,
+        title: label,
+        attributes:customAttributes
+    });
+
+    // 如果有特定大小需求，设置标记的大小
+    if (iconInfo[type].scaledSize) {
+        marker.setIcon(iconInfo[type]);
+    }
+
+    return marker;
+}
+
+// 关联复选框和标记
+function attachCheckboxHandler(checkboxId, markerType) {
+    var checkbox = $('#' + checkboxId);
+
+    checkbox.change(function () {
+        if (checkbox.is(':checked')) {
+            markers[markerType].setMap(map);
+        } else {
+            markers[markerType].setMap(null);
+        }
+    });
+}
+
+// 显示选项卡内容
+function showTab(tabName) {
+    // 隐藏所有选项卡内容
+    $('.tab-content').hide();
+
+    // 显示指定选项卡内容
+    $('#' + tabName).show();
+}
+
+// 在页面加载后的初始化
+$(document).ready(function () {
+    initMap();
+
+    // 关联复选框和标记
+    handleCheckboxChange('camelCheckbox', 'camel');
+    handleCheckboxChange('catCheckbox', 'cat');
+    handleCheckboxChange('dogCheckbox', 'dog');
+    handleCheckboxChange('rhinoCheckbox', 'rhino');
+    handleCheckboxChange('leopardCheckbox', 'leopard');
+    handleCheckboxChange('lionCheckbox', 'lion');
+    handleCheckboxChange('elephantCheckbox', 'elephant');
+    handleCheckboxChange('xia-Checkbox', '史前至夏商周');
+    handleCheckboxChange('Qinhan-Checkbox', '秦漢');
+
+
+    // 获取图标和 category-container 的引用
+// 获取图标和 category-container 的引用
+
+var categoryToggleIcon = $('#toggle');
+var categoryContainer = $('.category-container');
+
+var isContainerVisible = true;
+
+// 添加点击事件处理程序
+categoryToggleIcon.click(function () {
+    // 切换 category-container 的显示状态
+    categoryContainer.toggle();
+
+    // 更新容器的显示状态
+    isContainerVisible = !isContainerVisible;
+
+    // 根据显示状态更新图标位置
+    if (isContainerVisible) {
+        categoryToggleIcon.css('left', '10%'); // 位于 .category-container 的右侧中心
+    } else {
+        categoryToggleIcon.css('left', '0%'); // 移至页面最左侧
+    }
+});
+
+});
+//处理复选框的变化事件
+function handleCheckboxChange(checkboxId, categories) {
+    var checkbox = $('#' + checkboxId);
+
+    checkbox.change(function () {
+        if (checkbox.is(':checked')) {
+            // 显示包含任何一个标签的标记
+            for (var key in markers) {
+                var marker = markers[key];
+                if (marker.attributes && marker.attributes.categories) {
+                    for (var i = 0; i < categories.length; i++) {
+                        if (marker.attributes.categories.includes(categories[i])) {
+                            marker.setMap(map);
+                            break; // 不需要检查其他标签
+                        }
+                    }
+                }
+            }
+        } else {
+            // 隐藏包含任何一个标签的标记
+            for (var key in markers) {
+                var marker = markers[key];
+                if (marker.attributes && marker.attributes.categories) {
+                    var containsCategory = false;
+                    for (var i = 0; i < categories.length; i++) {
+                        if (marker.attributes.categories.includes(categories[i])) {
+                            containsCategory = true;
+                            break; // 不需要继续检查其他标签
+                        }
+                    }
+                    if (containsCategory) {
+                        marker.setMap(null);
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+
+function toggleContainer(containerId) {
+    var container = document.getElementById(containerId);
+
+    if (container.style.display === 'block' || container.style.display === '') {
+        container.style.display = 'none';
+    } else {
+        container.style.display = 'block';
+    }
+}
+
+// 切换 "全不选" 单选按钮的选择状态
+function toggleSelf(button) {
+    button.checked = !button.checked;
+}
+
+

@@ -1,0 +1,267 @@
+        /* 禁止选择文本 */
+body {
+    -webkit-user-select: none; /* Safari 和 Chrome */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* 标准语法 */
+    cursor: default; /* 鼠标指针样式设置为默认，以防止出现选择光标 */
+}
+/* 地图容器的样式 */
+#map-container {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 100%;
+    height: 83%;
+    
+    background-color: #c7f00e;
+    z-index:0;
+    }
+
+.external-container{
+    position: absolute;  
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #0eecf0;
+    }
+
+
+       
+/* 图片按钮的样式 */
+.image-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    z-index: 1;
+    }
+
+/* 文字的样式 */
+.text {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    color: #333;
+    font-size: 16px;
+            
+    display: none;
+    }
+
+        
+
+/* 选项卡按钮的样式 */
+.tab-button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    top :50%;
+    margin-right: 0px;
+    z-index: 1;
+    }
+
+/* 选项卡内容的样式 */
+.tab-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 1;
+    }
+       
+        
+        
+        
+
+
+
+
+.category-container {
+    position: relative;
+    display: flex;
+    width: 10%;
+    flex-direction: column;
+    
+    justify-content: space-between;
+    background-color: #d8d1d0;
+    padding: 10px;
+    top:20%;
+    
+    transition: display 0.5s; /* 添加过渡动画以平滑显示/隐藏 */
+   
+    font-size: 15pt;
+    /* 添加垂直滚动条 */
+    overflow:auto;
+    max-height:430pt; /* 设置最大高度 */
+    
+    z-index: 1;
+
+    
+    transition: display 0.5s ease;
+    
+}
+.category-container::-webkit-scrollbar {
+    width: 0.5em; /* 宽度设置为0.5em */
+}
+
+.category-container::-webkit-scrollbar-track {
+    background-color: transparent; /* 轨道背景色设置为透明 */
+}
+
+.category-container::-webkit-scrollbar-thumb {
+    background-color: #d8d1d0; /* 滚动条颜色 */
+    border-radius: 20px; /* 滚动条的圆角 */
+}
+.category-sub{
+    z-index: 4;
+
+}
+
+
+.subcategory-container{
+    position: relative;
+    flex-direction: column;
+    align-items: left;
+    display:flex;
+    padding: 0px;
+    margin-bottom: 5px; /* 添加一些底部间距，使得标签之间有空白 */
+    background-color: #c4f10e;
+    
+    z-index:4;
+    transition: width 0.5s; /* 添加过渡动画以平滑显示/隐藏 */
+    font-size: 12pt;
+}
+
+.toggle-icon {
+    position: absolute;
+    top: 50%; /* 将图标垂直居中 */
+    left: 10%; /* 放置在右侧 */
+    transform: translateY(-50%); /* 使其垂直居中 */
+    width: 50px;
+    height: 50px;
+    background-image: url('/media/animal_icon/rhino.png');
+    background-size: cover;
+    cursor: pointer;
+    z-index: 4; /* 设置一个较高的 z-index，以便位于 .category-container 之上 */
+    transition: left 0.5s; /* 添加过渡动画以平滑移动 */
+    
+   
+
+
+}
+
+.category-container.hidden .toggle-icon {
+    left: 90%; /* 移至页面最右侧 */
+}
+
+    /* 单个分类按钮样式 */
+    .category-button {
+        background-color: #e422d7;
+        border: none;
+        /* padding: 10px 20px; */
+        margin: 2px;
+        font-size: 10pt;
+        /* cursor: pointer; */
+        z-index: 4;
+    }
+
+    /* 选中按钮样式 */
+    .selected {
+        background-color: #007bff;
+        color: #fff;
+        z-index: 4;
+    }
+
+/* 时间轴 */
+   
+.timeline-container{
+    position: absolute;
+    bottom: 0%;
+    z-index: 5;
+    width: 100%;
+    right:0%;
+    background-color: #c7f00e;
+    z-index:4 ;
+    height:15%;
+}
+#slider {
+    position: absolute;
+    right:5%;
+    width: 90%; /* 时间轴的宽度，根据需要调整 */
+    
+    z-index: 99999;
+  }
+
+  .timeline-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 11%;
+    
+}
+.button-container{
+    position: relative;
+    left:5%;
+    right:5%;
+}
+
+.timeline-button:hover {
+    background-color: #2980b9;
+}
+/* .timeline-text-container{
+    position: absolute;
+    bottom: 0%;
+    z-index: 5;
+    width: 100%;
+    right:0%;
+    background-color: #c7f00e;
+    z-index:4 ;
+    height:15%;
+} */
+
+
+
+
+.asia-button {
+    display: flex;
+        background-color: #f80000;
+        border: none;
+        /* padding: 10px 20px; */
+        /* margin: 2px; */
+        font-size: 8pt;
+        /* cursor: pointer; */
+        z-index: 4;
+        width: auto;
+    }
+    
+    .info-image {
+        width: 200px;
+        height: auto;
+        display: block; /* 使图像变为块级元素，可以使用margin: 0 auto;实现水平居中 */
+        margin: 0 auto; /* 通过设置左右外边距为auto，实现水平居中 */
+        
+    }
+    
+    .info-window {
+        width: 400px;
+        height: 200px;
+        text-align: left; /* 将文本内容水平居中 */
+        
+        
+    }
+    .info-reference{
+        font-size: 6pt;
+    }
+    img[src="media/animal_icon/lion_gather.png"] {
+        width: 25px; /* 图标宽度 */
+        height: 25px; /* 图标高度 */
+        /* 你可以添加其他样式，例如旋转、阴影等 */
+    }
